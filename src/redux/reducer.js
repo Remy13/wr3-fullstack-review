@@ -25,7 +25,6 @@ export function logoutUser(){
 
 export function getUser(){
     const user = axios.get('/auth/user')
-
     return {
         type: GET_USER,
         payload: user

@@ -1,5 +1,7 @@
 import React from 'react';
 import axios from 'axios';
+import {connect} from 'react-redux';
+import {loginUser} from '../redux/reducer';
 
 class Login extends React.Component {
     constructor(){
@@ -28,6 +30,7 @@ class Login extends React.Component {
     login = () => {
         const {email, password} = this.state;
         axios.post('/auth/login', {email, password}).then(res => {
+            this.props.loginUser(res.data);
             this.props.history.push('/front_page')
         }).catch(err => {
             console.log(err);
@@ -38,6 +41,7 @@ class Login extends React.Component {
     register = () => {
         const {email, password, firstName, lastName} = this.state;
         axios.post('/auth/register', {email, password, firstName, lastName}).then(res => {
+            this.props.loginUser(res.data);
             this.props.history.push('/front_page');
         }).catch(err => {
             console.log(err);
@@ -76,4 +80,6 @@ class Login extends React.Component {
 }
 }
 
-export default Login;
+const mapStateToProps = state => state;
+
+export default connect(mapStateToProps, {loginUser})(Login);
