@@ -18,6 +18,13 @@
   justify-content: center;
 }
 
+.login-container > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
 input, .btn-container {
   margin: 10px;
 }

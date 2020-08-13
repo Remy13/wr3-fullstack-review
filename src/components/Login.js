@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 
 class Login extends React.Component {
     constructor(){
@@ -24,6 +25,26 @@ class Login extends React.Component {
         })
     }
 
+    login = () => {
+        const {email, password} = this.state;
+        axios.post('/auth/login', {email, password}).then(res => {
+            this.props.history.push('/front_page')
+        }).catch(err => {
+            console.log(err);
+            alert('Login Failed👺')
+        })
+    }
+
+    register = () => {
+        const {email, password, firstName, lastName} = this.state;
+        axios.post('/auth/register', {email, password, firstName, lastName}).then(res => {
+            this.props.history.push('/front_page');
+        }).catch(err => {
+            console.log(err);
+            alert('Register Failed⛈')
+        })
+    }
+
     render(){
         const {email, password, firstName, lastName} = this.state;
         return <div className="login">
@@ -34,8 +55,8 @@ class Login extends React.Component {
                     <input onChange={e => this.changeHandler(e)} name="email" type="text" value={email} placeholder="Email"/>
                     <input onChange={e => this.changeHandler(e)} name="password" type="password" value={password} placeholder="Password"/>
                     <div className="btn-container">
-                        <button>Login</button>
-                        <button>Sign Up</button>
+                        <button onClick={this.login}>Login</button>
+                        <button onClick={this.toggle}>Sign Up</button>
                     </div> 
                 </div>
                 :
@@ -45,8 +66,8 @@ class Login extends React.Component {
                     <input onChange={e => this.changeHandler(e)} name="email" type="text" value={email} placeholder="Email"/>
                     <input onChange={e => this.changeHandler(e)} name="password" type="password" value={password} placeholder="Password"/>
                     <div className="btn-container">
-                        <button>Register</button>
-                        <button>I already have an account</button>
+                        <button onClick={this.register}>Register</button>
+                        <button onClick={this.toggle}>I already have an account</button>
                     </div>
                 </div>   
             }
