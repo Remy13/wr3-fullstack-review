@@ -25,7 +25,7 @@ class Header extends React.Component {
             </div>
             {this.props.isLoggedIn
             ?
-            <h1>Welcome, {this.props.firstName} {this.props.lastName}</h1>
+            <h1>Welcome, {this.props.user.firstName} {this.props.user.lastName}</h1>
             :<h1>Schmeddit</h1>}
                 <nav className='navigation'>
                     <ul>
