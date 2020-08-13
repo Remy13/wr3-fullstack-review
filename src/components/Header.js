@@ -1,5 +1,6 @@
 import React from 'react';
 import "./Header.css";
+import {Link} from "react-router-dom";
 
 const Header = () => {
     return <header>
@@ -9,9 +10,9 @@ const Header = () => {
         <h1>Schmeddit</h1> 
             <nav className='navigation'>
                 <ul>
-                    <li>Profile</li>
-                    <li>Front Page</li>
-                    <li>Logout</li>
+                    <li><Link to="/profile">Profile</Link></li>
+                    <li><Link to="/front_page">Front Page</Link></li>
+                    <li><Link to="/">Logout</Link></li>
                 </ul>
             </nav>
     </header>
