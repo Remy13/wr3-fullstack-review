@@ -68,4 +68,21 @@ CREATE TABLE comments (
 
 #### Front-end
 - Dependencies: 
+    - axios
+    - redux
+    - react-redux
+    - redux-promise-middleware
+    - react-router-dom
 - File Strucutre:
+    - src/
+    - App.js
+    - App.css
+    - reset.css
+    - redux/
+        - store.js
+        - reducer.js
+    - components/
+        - Header.js
+        - Login.js
+        - Profile.js
+        - FrontPage.js
